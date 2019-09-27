@@ -8,9 +8,8 @@ RUN set -ex; \
         libmagickcore-6.q16-3-extra \
         smbclient \
         supervisor \
-		tesseract-ocr \
-		tesseract-ocr-deu \
-		tesseract-ocr-fra \
+	tesseract-ocr \
+	tesseract-ocr-deu \
 #       libreoffice \
     ; \
     rm -rf /var/lib/apt/lists/*
@@ -55,11 +54,10 @@ RUN set -ex; \
 RUN mkdir -p \
     /var/log/supervisord \
     /var/run/supervisord \
-    /etc/supervisord \
 ;
-
-COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 ENV NEXTCLOUD_UPDATE=0
 
 CMD ["/usr/bin/supervisord"]
+
+#COPY supervisord.conf /etc/supervisor/supervisord.conf
