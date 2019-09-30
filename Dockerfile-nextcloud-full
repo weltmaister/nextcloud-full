@@ -58,6 +58,6 @@ RUN set -ex; \
 
 ENV NEXTCLOUD_UPDATE=0
 
-CMD ["/usr/bin/supervisord"]
+#CMD ["/usr/bin/supervisord"]
 
 #COPY supervisord.conf /etc/supervisor/supervisord.conf
