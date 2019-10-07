@@ -34,8 +34,13 @@ RUN set -ex; \
         gmp \
         imap \
     ; \
-    pecl install inotify smbclient; \
-    docker-php-ext-enable inotify smbclient; \
+    pecl install inotify; \
+    pecl install smbclient; \
+    \
+    docker-php-ext-enable \
+        inotify \
+	smbclient \
+    ; \
     \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
@@ -50,6 +55,8 @@ RUN set -ex; \
     \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
+    
+RUN echo 'extension=inotify.so' > /usr/local/etc/php/conf.d/docker-php-ext-inotify.ini
 
 RUN mkdir -p \
     /var/log/supervisord \
@@ -57,10 +64,7 @@ RUN mkdir -p \
 ;
 
 COPY supervisord.conf /etc/supervisor/supervisord.conf
-COPY docker-php-ext-inotify.ini /usr/local/etc/php/conf.d/docker-php-ext-inotify.ini
 
 #ENV NEXTCLOUD_UPDATE=1
 
 CMD ["/usr/bin/supervisord"]
-
-
