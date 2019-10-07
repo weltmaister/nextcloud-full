@@ -56,7 +56,9 @@ RUN set -ex; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
     
-RUN echo 'extension=inotify.so' > /usr/local/etc/php/conf.d/docker-php-ext-inotify.ini
+RUN echo 'extension=inotify.so' > /usr/local/etc/php/conf.d/docker-php-ext-inotify.ini; \
+    \
+    echo 'extension=smbclient.so' > /usr/local/etc/php/conf.d/docker-php-ext-smbclient.ini
 
 RUN mkdir -p \
     /var/log/supervisord \
