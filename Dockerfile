@@ -25,7 +25,6 @@ RUN set -ex; \
         libgmp3-dev \
         libkrb5-dev \
         libsmbclient-dev \
-	php-dev \
     ; \
     \
     docker-php-ext-configure imap --with-kerberos --with-imap-ssl; \
@@ -35,10 +34,8 @@ RUN set -ex; \
         gmp \
         imap \
     ; \
-    pecl install inotify; \
-    docker-php-ext-enable inotify; \
-    pecl install smbclient; \
-    docker-php-ext-enable smbclient; \
+    pecl install inotify smbclient; \
+    docker-php-ext-enable inotify smbclient; \
     \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
