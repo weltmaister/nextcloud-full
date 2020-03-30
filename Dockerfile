@@ -7,7 +7,7 @@ RUN set -ex; \
         ffmpeg \
         libmagickcore-6.q16-3-extra \
         smbclient \
-#        supervisor \
+        supervisor \
 	tesseract-ocr \
 	tesseract-ocr-deu \
 #       libreoffice \
@@ -59,13 +59,13 @@ RUN echo 'extension=inotify.so' > /usr/local/etc/php/conf.d/docker-php-ext-inoti
     \
     echo 'extension=smbclient.so' > /usr/local/etc/php/conf.d/docker-php-ext-smbclient.ini
 
-#RUN mkdir -p \
-#    /var/log/supervisord \
-#    /var/run/supervisord \
-#;
+RUN mkdir -p \
+    /var/log/supervisord \
+    /var/run/supervisord \
+;
 
-#COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 ENV NEXTCLOUD_UPDATE=1
 
-#CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord"]
