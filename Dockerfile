@@ -5,7 +5,8 @@ RUN set -ex; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         ffmpeg \
-        libmagickcore-6.q16-3-extra \
+        libmagickcore-6.q16-6-extra \
+        procps \
         smbclient \
         supervisor \
 	tesseract-ocr \
@@ -64,8 +65,8 @@ RUN mkdir -p \
     /var/run/supervisord \
 ;
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY supervisord.conf
 
 ENV NEXTCLOUD_UPDATE=1
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/supervisord.conf"]
