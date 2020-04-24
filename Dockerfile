@@ -11,7 +11,7 @@ RUN set -ex; \
         supervisor \
 	tesseract-ocr \
 	tesseract-ocr-deu \
-	unrar \
+#	unrar \
 	p7zip \
 	p7zip-full \
 #       libreoffice \
