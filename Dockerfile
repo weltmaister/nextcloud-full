@@ -6,6 +6,7 @@ RUN set -ex; \
     apt-get install -y --no-install-recommends \
         ffmpeg \
         libmagickcore-6.q16-6-extra \
+	ghostscript \
         procps \
         smbclient \
         supervisor \
