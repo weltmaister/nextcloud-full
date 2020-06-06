@@ -74,3 +74,4 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 ENV NEXTCLOUD_UPDATE=1
 
 CMD ["/usr/bin/supervisord"]
+
