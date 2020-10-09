@@ -1,4 +1,4 @@
-FROM nextcloud:19-rc-apache
+FROM nextcloud:19-apache
 
 RUN set -ex; \
     \
