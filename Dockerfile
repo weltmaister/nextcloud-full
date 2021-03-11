@@ -14,6 +14,7 @@ RUN set -ex; \
 	tesseract-ocr-deu \
 	p7zip \
 	p7zip-full \
+	htop \
 #       libreoffice \
     ; \
     rm -rf /var/lib/apt/lists/*
